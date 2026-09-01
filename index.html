@@ -65,8 +65,10 @@
   }
 
   * { box-sizing: border-box; }
+  html { overflow-x: hidden; }
   body {
     margin: 0;
+    overflow-x: hidden;
     background: var(--bg);
     color: var(--ink);
     font-family: 'Karla', ui-sans-serif, system-ui, sans-serif;
@@ -83,6 +85,7 @@
   .hero {
     padding: 72px 0 52px;
     position: relative;
+    overflow: hidden;
   }
   .hero::before {
     content: "";
