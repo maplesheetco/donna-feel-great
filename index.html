@@ -65,7 +65,8 @@
   }
 
   * { box-sizing: border-box; }
-  html { overflow-x: hidden; }
+  html { overflow-x: hidden; scroll-behavior: smooth; }
+  section, #top { scroll-margin-top: 76px; }
   body {
     margin: 0;
     overflow-x: hidden;
@@ -80,6 +81,35 @@
   a { color: inherit; }
 
   .wrap { max-width: 720px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---- top nav ---- */
+  .site-nav {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--surface);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 24px;
+  }
+  .nav-brand {
+    font-family: 'Newsreader', serif; font-style: italic; font-weight: 600;
+    font-size: 17px; text-decoration: none; color: var(--ink);
+    white-space: nowrap;
+  }
+  .nav-links { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .nav-links a {
+    font-family: 'Karla', sans-serif; font-weight: 600; font-size: 13.5px;
+    color: var(--ink-soft); text-decoration: none; white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--pine); }
+  .nav-links .btn {
+    padding: 9px 18px; font-size: 13px; border-radius: 999px;
+  }
+  @media (max-width: 640px) {
+    .nav-inner { flex-direction: column; gap: 12px; text-align: center; padding: 16px 20px; }
+    .nav-links { justify-content: center; gap: 14px 18px; }
+  }
 
   /* ---- hero ---- */
   .hero {
@@ -120,7 +150,7 @@
     color: var(--ink-soft);
     max-width: 46ch;
   }
-  .cta-row { margin-top: 30px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .cta-row { margin-top: 30px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
   .btn {
     display: inline-block;
     background: var(--pine-btn);
@@ -128,8 +158,8 @@
     font-family: 'Karla', sans-serif;
     font-weight: 700;
     font-size: 15px;
-    padding: 14px 26px;
-    border-radius: 8px;
+    padding: 14px 28px;
+    border-radius: 999px;
     text-decoration: none;
     box-shadow: var(--shadow);
     transition: transform 0.15s ease;
@@ -314,10 +344,10 @@
   /* ---- connect row ---- */
   .connect-row { margin-top: 22px; display: flex; gap: 12px; flex-wrap: wrap; }
   .btn-outline {
-    display: inline-flex; align-items: center; gap: 9px;
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px;
     border: 1.5px solid var(--pine); color: var(--pine);
     font-family: 'Karla', sans-serif; font-weight: 700; font-size: 14px;
-    padding: 11px 20px; border-radius: 8px; text-decoration: none;
+    padding: 11px 22px; border-radius: 999px; text-decoration: none;
   }
   .btn-outline svg { width: 16px; height: 16px; flex-shrink: 0; }
 
@@ -392,24 +422,47 @@
     h1.headline { font-size: 34px; }
     .ritual-card { grid-template-columns: 1fr; }
     .about-card { grid-template-columns: 1fr; }
+    .cta-row { flex-direction: column; align-items: stretch; gap: 12px; }
+    .cta-row .btn, .cta-row .btn-outline { width: 100%; text-align: center; }
+    .btn-note { text-align: center; }
+    .connect-row { flex-direction: column; align-items: stretch; }
+    .connect-row .btn-outline { width: 100%; text-align: center; }
+    .nav-links .btn { width: auto; }
   }
 </style>
 
+<nav class="site-nav">
+  <div class="nav-inner wrap">
+    <a class="nav-brand" href="#top">Donna Consulta</a>
+    <div class="nav-links">
+      <a href="#story">Her Story</a>
+      <a href="#ritual">The Ritual</a>
+      <a href="#join">Join the Team</a>
+      <a href="#contact">Contact</a>
+      <a class="btn" href="https://ufeelgreat.com/c/DonnaConsulta">Shop the System</a>
+    </div>
+  </div>
+</nav>
+
 <div class="wrap">
 
-  <section class="hero" style="border-top:none;">
+  <section class="hero" id="top" style="border-top:none;">
     <div class="hero-inner">
       <span class="eyebrow"><span class="dot"></span>Donna's Feel Great System</span>
       <h1 class="headline">Two simple habits. One steadier day.</h1>
       <p class="hero-sub">A daily pairing of Unimate and Balance — the two products I actually use, in the order I actually take them. Shared here so you can see the whole picture before you try it.</p>
       <div class="cta-row">
         <a class="btn" href="https://ufeelgreat.com/c/DonnaConsulta">See the Feel Great System &rarr;</a>
+        <a class="btn-outline" href="https://www.facebook.com/share/1Di2gawRoz/?mibextid=wwXIfr" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 10.5V21h4v-7h3l.5-3.5H12V8.5c0-1 .3-1.7 1.7-1.7H16V3.3C15.6 3.2 14.3 3 12.9 3 10 3 8 4.8 8 8.1v2.4H5v3.5h3z"/></svg>
+          Message Donna
+        </a>
         <span class="btn-note">Opens Donna's official Unicity page</span>
       </div>
     </div>
   </section>
 
-  <section>
+  <section id="story">
     <span class="section-tag">Why I'm sharing this</span>
     <h2 class="section-title">In Donna's words</h2>
 
@@ -433,7 +486,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="join">
     <span class="section-tag">The next step</span>
     <h2 class="section-title">From customer to Business Partner</h2>
     <p class="section-lede">A few months after starting, Donna decided to join the business side too — officially welcomed by her team this year.</p>
@@ -456,7 +509,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="contact">
     <span class="section-tag">Get in touch</span>
     <h2 class="section-title">Connect with Donna</h2>
     <p class="section-lede">Have questions before you order? Message her directly.</p>
@@ -468,7 +521,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="ritual">
     <span class="section-tag">The routine</span>
     <h2 class="section-title">How the day breaks down</h2>
     <p class="section-lede">The Feel Great System is built around two products used at different points in the day, not one all-in-one pill.</p>
